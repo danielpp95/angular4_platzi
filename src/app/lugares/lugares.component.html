@@ -1,0 +1,21 @@
+
+    
+    
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>Lugares cerca de ti</h3>
+          <ul class="list-group">
+            <ng-container *ngFor="let item of lugares">
+              <a routerLink='/detalle/{{item.id}}' [queryParams]="{action: 'view'}" >
+                <li class="list-group-item" *ngIf="item.active" >{{item.nombre}}</li>
+              </a>
+            </ng-container>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Destacados</h3>
+        </div>
+      </div>
+    </div>
