@@ -5,7 +5,6 @@ import linkifystr from 'linkifyjs/string'
 
 export class LinkifystrPipe implements PipeTransform {
     transform(str: string): string{
-        debugger
         return str ? linkifystr(str, {target: '_system'}) : str
     }
 }

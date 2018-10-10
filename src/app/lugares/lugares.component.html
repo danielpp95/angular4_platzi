@@ -1,3 +1,12 @@
+<div 
+  id="cuadrado" 
+  [@contenedorAnimable]="state"
+  (@contenedorAnimable.start)="animationStart($event)" 
+  (@contenedorAnimable.done)="animationDone($event)" 
+></div>
+<button class="btn btn-primary" (click)="animate()" >animar!!</button>
+
+
 <div class="container">
   <div class="row">
     <div class="col-md-8">
@@ -14,7 +23,7 @@
               <br>
               <small> Creado: {{ item.id | date:fullDate | lowercase }} </small>
               <br>
-              <p [innerHtml]="item.descripcion | linkifystr" >s</p>
+              <p [innerHtml]="item.descripcion | linkifystr" >s/p>
             </li>
         </ng-container>
       </ul>
@@ -22,6 +31,13 @@
     </div>
     <div class="col-md-4">
       <h3>Destacados</h3>
+      <ul class="list-group" >
+          <ng-container *ngFor="let item of lugares" >
+              <li class="bg-warning padding list-group-item" *ngIf="item.plan=='full'" >
+                  <a routerLink='/detalle/{{item.id}}'> {{ item.nombre }} </a>
+              </li>
+            </ng-container>
+      </ul>
     </div>
   </div>
 </div>

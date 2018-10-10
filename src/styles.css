@@ -4,3 +4,9 @@
     background-color: lightgreen;
     color: red;
 }
+
+#cuadrado{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}

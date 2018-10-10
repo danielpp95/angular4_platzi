@@ -17,12 +17,13 @@ import { LugaresService } from './services/lugares.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { CrearComponent } from './crear/crear.component';
 import { actualizarComponent } from './actualizar/actualizar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { LinkifystrPipe } from './pipes/linkify.pipe';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAvZHLmJHS6DzaCFAsZ9i36IIiAqxCqhpQ",
@@ -54,7 +55,7 @@ const appRoutes: Routes = [
     ContactoComponent,
     CrearComponent,
     actualizarComponent,
-    LinkifystrPipe
+    LinkifystrPipe,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule
   ],
   providers: [LugaresService],
   bootstrap: [AppComponent]
