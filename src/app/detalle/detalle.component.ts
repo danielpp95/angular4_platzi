@@ -17,7 +17,10 @@ export class DetallepComponent {
 
     this.id = this.route.snapshot.params['id']
 
-    this.lugar = lugaresService.buscarLugar(this.id)
+    lugaresService.buscarLugar(this.id).subscribe( lugar => {
+      this.lugar = lugar
+      console.log(lugar)
+    })
   }
   
 }

@@ -17,6 +17,10 @@ import { LugaresService } from './services/lugares.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CrearComponent } from './crear/crear.component';
+import { actualizarComponent } from './actualizar/actualizar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 export const firebaseConfig = {
   apiKey: "AIzaSyAvZHLmJHS6DzaCFAsZ9i36IIiAqxCqhpQ",
   authDomain: "angular-4-platzi.firebaseapp.com",
@@ -31,7 +35,9 @@ const appRoutes: Routes = [
   {path: '', component: LugaresComponent},
   {path: 'lugares', component: LugaresComponent},
   {path: 'detalle/:id', component: DetallepComponent},
-  {path: 'contacto', component: ContactoComponent}
+  {path: 'contacto', component: ContactoComponent},
+  {path: 'crear', component: CrearComponent},
+  {path: 'actualizar/:id', component: actualizarComponent},
 ]
 
 
@@ -42,7 +48,9 @@ const appRoutes: Routes = [
     ContarClicksDirective,
     DetallepComponent,
     LugaresComponent,
-    ContactoComponent
+    ContactoComponent,
+    CrearComponent,
+    actualizarComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +59,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule,
+    HttpModule
   ],
   providers: [LugaresService],
   bootstrap: [AppComponent]

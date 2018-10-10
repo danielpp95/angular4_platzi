@@ -1,0 +1,45 @@
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a routerLink='/lugares'>Lugares</a></li> / Contacto
+    </ol>
+
+    <div class="container">
+        <!-- 
+
+
+         -->
+
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" class="form-control" [(ngModel)]="lugar.nombre" />
+
+        <label for="message">Description</label>
+        <textarea id="message" cols="30" rows="5" class="form-control" [(ngModel)]="lugar.descripcion"></textarea>
+
+        <label for="plan">Plan</label>
+        <div>
+            <input [(ngModel)]="lugar.plan" value="free" type="radio" name="plan" id="free" ><label for="free">Free</label>
+            <input [(ngModel)]="lugar.plan" value="basic" type="radio" name="plan" id="basic"><label for="basic">Basic</label>
+            <input [(ngModel)]="lugar.plan" value="full" type="radio" name="plan" id="full" active><label for="full">Full</label>
+        </div>
+
+        <span>Active</span>
+        <div>
+            <input [(ngModel)]="lugar.active" type="radio" name="active" id="activeTrue" value="true" ><label for="activeTrue">True</label>
+            <input [(ngModel)]="lugar.active" type="radio" name="active" id="activeFalse" value="false" ><label for="activeFalse">False</label>
+        </div>
+
+        {{ lugar.nombre }}
+        {{ lugar.descripcion }}
+        {{ lugar.plan }}
+
+
+        <br>
+
+        <div class="float-right ">
+            <a class="btn btn-secondary " >cancelar</a>
+            <a class="btn btn-primary "  (click)="guardarLugar()" >Enviar</a>
+        </div>
+    </div>
+
+    
+</div>
