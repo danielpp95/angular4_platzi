@@ -1,23 +1,27 @@
-
-    
-    
-      
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <h3>Lugares cerca de ti</h3>
-          <a routerLink="/crear" class="btn btn-primary">Crear un nuevo negocio</a>
-          <ul class="list-group">
-            <ng-container *ngFor="let item of lugares">
-              <a routerLink='/detalle/{{item.id}}' [queryParams]="{action: 'view'}" >
-                <li class="list-group-item" *ngIf="item.active" >{{item.nombre}}</li>
-              </a>
-            </ng-container>
-          </ul>
-          <p class="bg-danger">{{err}}</p>
-        </div>
-        <div class="col-md-4">
-          <h3>Destacados</h3>
-        </div>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Lugares cerca de ti</h3>
+      <a routerLink="/crear" class="btn btn-primary">Crear un nuevo negocio</a>
+      <ul class="list-group">
+        <ng-container *ngFor="let item of lugares">
+          <li class="list-group-item" *ngIf="item.active" >
+            <a routerLink='/detalle/{{item.id}}' [queryParams]="{action: 'view'}" >
+              <h5>
+                {{item.nombre  | lowercase }}
+              </h5>
+            </a>
+              <br>
+              <small> Creado: {{ item.id | date:fullDate | lowercase }} </small>
+              <br>
+              <p [innerHtml]="item.descripcion | linkifystr" >s</p>
+            </li>
+        </ng-container>
+      </ul>
+      <p class="bg-danger">{{err}}</p>
     </div>
+    <div class="col-md-4">
+      <h3>Destacados</h3>
+    </div>
+  </div>
+</div>

@@ -21,6 +21,9 @@ import { CrearComponent } from './crear/crear.component';
 import { actualizarComponent } from './actualizar/actualizar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { LinkifystrPipe } from './pipes/linkify.pipe';
+
+
 export const firebaseConfig = {
   apiKey: "AIzaSyAvZHLmJHS6DzaCFAsZ9i36IIiAqxCqhpQ",
   authDomain: "angular-4-platzi.firebaseapp.com",
@@ -50,7 +53,8 @@ const appRoutes: Routes = [
     LugaresComponent,
     ContactoComponent,
     CrearComponent,
-    actualizarComponent
+    actualizarComponent,
+    LinkifystrPipe
   ],
   imports: [
     BrowserModule,
