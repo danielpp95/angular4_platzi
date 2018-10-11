@@ -9,6 +9,9 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { auth } from 'firebase';
+import { AutorizacionService } from '../services/autorizacion.service';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-lugares',
@@ -43,21 +46,23 @@ export class LugaresComponent {
   err = ''
   state = 'open'
 
+  user: any = {}
+
   animate() {
     this.state = (this.state === 'open') ? 'closed' : 'open'
   }
 
   animationStart(event) {
-    console.log(event);
+    //console.log(event);
   }
 
   animationDone(event) {
-    console.log(event);
+    //console.log(event);
     //this.animate()
   }
  
 
-  constructor(private lugaresService: LugaresService) {
+  constructor(private lugaresService: LugaresService, autorizacionService: AutorizacionService) {
     //get data by angular fire 2
     //console.log(lugaresService.getLugares())
     
@@ -75,6 +80,9 @@ export class LugaresComponent {
       })
       this.err = 'Algo salio mal ;('
     } )
+
+    
+    
   }
 
-  }
+}

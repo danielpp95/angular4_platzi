@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AutorizacionService } from './services/autorizacion.service';
 
 @Component({
   selector: 'app-root',
@@ -7,23 +8,25 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'platzisquare';
-  a = 2;
-  b = 4;
-  listo = false
-  nombre = ""
-  lugares:any = [
-    {plan: "basic", distancia: 1, active: true, nombre: "Veterinaria huellitas"},
-    {plan: "full", distancia: 10, active: false, nombre: "Floristeria rosas rojas"},
-    {plan: "free", distancia: 20, active: true, nombre: "donas redondas"}
-  ]
 
-  constructor() {
-    setTimeout(() => {
-      this.listo = true
-    }, 2000);
+  isLogged = false;
+
+  constructor( private autorizationServece: AutorizacionService ) {
+    this.autorizationServece.isLogged().subscribe(result =>{
+      if (result && result.uid) {
+        this.isLogged = true
+      }else {
+        this.isLogged = false
+      }
+    }, err=>{
+      this.isLogged = false
+    })
   }
 
-  hacerAlgo() {
-    alert("haciendo algo")
+  public logout(event) {
+    event.preventDefault()
+    this.autorizationServece.logout()
   }
+
+  
 }

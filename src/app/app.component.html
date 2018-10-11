@@ -24,6 +24,9 @@
         <li role="presentation"><a routerLink="/lugares">Lugares</a></li>
         <li role="presentation"><a routerLink="/detalle">Detalle</a></li>
         <li role="presentation"><a routerLink="/contacto">Contacto</a></li>
+        <li role="presentation" *ngIf="!isLogged" ><a routerLink="/login">Login</a></li>
+        <li role="presentation" *ngIf="!isLogged" ><a routerLink="/regiter">Register</a></li>
+        <li role="presentation" *ngIf="isLogged" ><a href="#" (click)="logout($event)" >Salir</a></li>
       </ul>
 </div>
 

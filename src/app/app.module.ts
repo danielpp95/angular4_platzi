@@ -24,6 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { LinkifystrPipe } from './pipes/linkify.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { AutorizacionService } from './services/autorizacion.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAvZHLmJHS6DzaCFAsZ9i36IIiAqxCqhpQ",
@@ -42,6 +45,8 @@ const appRoutes: Routes = [
   {path: 'contacto', component: ContactoComponent},
   {path: 'crear', component: CrearComponent},
   {path: 'actualizar/:id', component: actualizarComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegistroComponent},
 ]
 
 
@@ -56,6 +61,8 @@ const appRoutes: Routes = [
     CrearComponent,
     actualizarComponent,
     LinkifystrPipe,
+    LoginComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +76,7 @@ const appRoutes: Routes = [
     HttpModule,
     BrowserAnimationsModule
   ],
-  providers: [LugaresService],
+  providers: [LugaresService, AutorizacionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
