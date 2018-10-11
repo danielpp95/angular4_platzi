@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import swal from "sweetalert2";
 import { Router } from "@angular/router";
-var firebase = require("firebase");
 
 @Injectable()
 
@@ -31,7 +30,7 @@ export class AutorizacionService{
         return this.angularFireAuth.authState
     }
 
-    public login(email, pass, event) {
+    public login(email, pass) {
         this.angularFireAuth.auth.signInWithEmailAndPassword(email, pass)
             .then(()=>{
                 swal({
@@ -40,7 +39,6 @@ export class AutorizacionService{
                     text: 'Inicio de sesion satisfactorio',
 
                 })
-                if (event) {event()}
             })
             .catch(err=>{ this.err(err) })
     }

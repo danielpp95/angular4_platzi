@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { AutorizacionService } from './services/autorizacion.service';
+import { MyGuard } from './services/my-guard.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAvZHLmJHS6DzaCFAsZ9i36IIiAqxCqhpQ",
@@ -43,8 +44,8 @@ const appRoutes: Routes = [
   {path: 'lugares', component: LugaresComponent},
   {path: 'detalle/:id', component: DetallepComponent},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'crear', component: CrearComponent},
-  {path: 'actualizar/:id', component: actualizarComponent},
+  {path: 'crear', component: CrearComponent, canActivate:[MyGuard] },
+  {path: 'actualizar/:id', component: actualizarComponent, canActivate:[MyGuard] },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegistroComponent},
 ]
@@ -76,7 +77,7 @@ const appRoutes: Routes = [
     HttpModule,
     BrowserAnimationsModule
   ],
-  providers: [LugaresService, AutorizacionService],
+  providers: [LugaresService, AutorizacionService, MyGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
